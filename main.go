@@ -26,8 +26,8 @@ func patch(path string) error {
 		if bytes.Equal(data[i:i+keyLength], oldPubKey) {
 			buf.Write(data[lastIdx:i])
 			buf.Write(newPubKey)
+			fmt.Printf("Patched at %x\n", lastIdx)
 			lastIdx = i + keyLength
-			fmt.Printf("Patched at %x\n", i)
 		}
 	}
 	buf.Write(data[lastIdx:])
